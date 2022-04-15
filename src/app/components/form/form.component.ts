@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
 import { Student } from 'src/app/interfaces/student-response.interface';
 import { StudentService } from 'src/app/services/student-service';
 
@@ -24,7 +23,7 @@ export class FormComponent implements OnInit {
   form: FormGroup;
 
 
-  constructor(private fb: FormBuilder, private studentService: StudentService, private router: Router, private _snackBar: MatSnackBar) {
+  constructor(private fb: FormBuilder, private studentService: StudentService, private _snackBar: MatSnackBar) {
     //this.form va a ser igual a la instamcia que estamos inyectandi en el formbuilder y el 
     //fomrbuilder va a ser tambien de tipo formgroup
     this.form = this.fb.group({
@@ -50,7 +49,11 @@ export class FormComponent implements OnInit {
     }
    
     this.studentService.agregarUsuario(user);
-    this.router.navigate(['/dashboard/usuarios']);
+   
+
+    //avisar a abm para recargar usuarios
+    
+
 
     this._snackBar.open("El usuario fue agregado con éxito", "", {
       //aca se pasa un objeto con configuraciones

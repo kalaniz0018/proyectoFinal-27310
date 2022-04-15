@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { StudentService } from './services/student-service';
 
 @Component({
   selector: 'app-root',
@@ -11,14 +10,10 @@ export class AppComponent implements OnInit {
   title = 'proyecto-final-comision27310';
 
 
-
-  constructor(public studentService: StudentService) { }
-
+  constructor() { }
 
   ngOnInit(): void {
     
   }
-
-
 
 }
