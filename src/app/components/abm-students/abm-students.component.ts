@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSort } from '@angular/material/sort';
@@ -23,6 +23,8 @@ dataSource!: MatTableDataSource<any>;
 //Para poder usar el paginador
 @ViewChild(MatPaginator) paginator!: MatPaginator;
 @ViewChild(MatSort) sort!: MatSort;
+
+@Input('childToMaster') masterName: string | undefined;
 
 constructor(private studentService: StudentService, private _snackBar: MatSnackBar) { }
 

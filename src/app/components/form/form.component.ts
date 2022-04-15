@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Student } from 'src/app/interfaces/student-response.interface';
@@ -21,6 +21,8 @@ export class FormComponent implements OnInit {
   
   genero: any[] = ['masculino', 'femenino'];
   form: FormGroup;
+
+  @Output() childToParent = new EventEmitter<String>();
 
 
   constructor(private fb: FormBuilder, private studentService: StudentService, private _snackBar: MatSnackBar) {
@@ -52,8 +54,7 @@ export class FormComponent implements OnInit {
    
 
     //avisar a abm para recargar usuarios
-    
-
+    this.childToParent.emit('recargar');
 
     this._snackBar.open("El usuario fue agregado con éxito", "", {
       //aca se pasa un objeto con configuraciones

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ABMStudentsComponent } from './components/abm-students/abm-students.component';
 
 @Component({
   selector: 'app-root',
@@ -8,12 +9,18 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit {
 
   title = 'proyecto-final-comision27310';
-
+  @ViewChild(ABMStudentsComponent)
+  ambChild!: ABMStudentsComponent;
 
   constructor() { }
 
   ngOnInit(): void {
     
+  }
+
+  childToParent(event: String){
+    this.ambChild.cargarUsuarios()
+    console.log(event);
   }
 
 }
