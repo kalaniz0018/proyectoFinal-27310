@@ -1,52 +1,49 @@
 <div class="container">
-  <div class="formulario">
-    <form [formGroup]="userForm" #formDirective="ngForm">
-      <h1 class="title">Formulario </h1>
-      <mat-form-field appearance="outline">
-        <mat-label>Nombre</mat-label>
-        <input formControlName="name" [(ngModel)]="inputName" type="text" matInput placeholder="Nombre">
-        <mat-error *ngIf="userForm.get('name')?.hasError('required')">Este campo es obligatorio
-        </mat-error>
-      </mat-form-field>
-      <mat-form-field appearance="outline">
-        <mat-label>Apellido</mat-label>
-        <input formControlName="surname" [(ngModel)]="inputSurName" type="text" matInput placeholder="Apellido">
-        <mat-error *ngIf="userForm.get('surname')?.hasError('required')">Este campo es obligatorio
-        </mat-error>
-      </mat-form-field>
-      <mat-form-field appearance="outline">
-        <mat-label>Correo electrónico</mat-label>
-        <input formControlName="email" [(ngModel)]="inputEmail" type="email" matInput placeholder="E-mail">
-        <mat-error *ngIf="userForm.get('email')?.hasError('required')">Este campo es obligatorio
-        </mat-error>
-        <mat-error *ngIf="userForm.get('email')?.hasError('email')">El formato tiene que ser
-          email</mat-error>
+  <mat-toolbar>
+      <span>Crear Usuario</span>
+  </mat-toolbar>
 
-      </mat-form-field>
+  <mat-card style="margin-top: 20px;">
+      <!-- Bindiamos el form con nuestro formulario -->
+      <form [formGroup]="form" (ngSubmit)="agregarUsuario()">
+          <mat-grid-list cols="4" rowHeight="70px">
+              <mat-grid-tile [colspan]="1" [rowspan]="1">
+                  <mat-form-field class="ancho">
+                      <mat-label>USUARIO</mat-label>
+                      <input matInput autocomplete="off" formControlName="usuario">
+                  </mat-form-field>
+              </mat-grid-tile>
+              <mat-grid-tile [colspan]="3" [rowspan]="5" [style.background]="'lightblue'">
+                  <img src="../../../../../assets/img/user.png" width="250" height="250">
+              </mat-grid-tile>
+              <mat-grid-tile [colspan]="1" [rowspan]="1">
+                  <mat-form-field class="ancho">
+                      <mat-label>NOMBRE</mat-label>
+                      <input matInput autocomplete="off" formControlName="nombre">
+                  </mat-form-field>
+              </mat-grid-tile>
+              <mat-grid-tile [colspan]="1" [rowspan]="1">
+                  <mat-form-field class="ancho">
+                      <mat-label>APELLIDO</mat-label>
+                      <input matInput autocomplete="off" formControlName="apellido">
+                  </mat-form-field>
+              </mat-grid-tile>
+              <mat-grid-tile [colspan]="1" [rowspan]="1">
+                  <mat-form-field class="ancho">
+                      <mat-label>GÉNERO</mat-label>
+                      <mat-select formControlName="genero">
+                          <mat-option *ngFor="let item of genero" [value]="item">
+                              {{item}}
+                          </mat-option>
+                      </mat-select>
+                  </mat-form-field>
+              </mat-grid-tile>
+              <mat-grid-tile [colspan]="1" [rowspan]="1">
+                  <button mat-raised-button style="margin-right: 20px;">Volver</button>
+                  <button type="submit" [disabled]="form.invalid" mat-raised-button color="primary">Aceptar</button>
+              </mat-grid-tile>
+          </mat-grid-list>
+      </form>
 
-
-    </form>
-    <button class="button-reserva"  mat-raised-button>Agregar</button>
-  </div>
-
+  </mat-card>
 </div>
-<!-- <div>
-  <h1>Formulario</h1>
-  <form [formGroup]="myform">
-    <div>
-      <input type="text" placeholder="Enter your name" name="name" formControlName="name">
-    </div>
-    <div>
-      <input type="text" placeholder="Enter your mobile number" name="phone" formControlName="phone">
-    </div>
-    <div>
-      <input type="text" placeholder="Enter your email" name="email" formControlName="email">
-    </div>
-    <div>
-      <input type="text" placeholder="Enter your address" name="address" formControlName="address">
-    </div>
-    <button type="submit" (click)="clicked()" [disabled]="!myform.valid">SUBMIT</button>
-  </form>
-  <br>
-  {{form | json}}
-</div> -->
