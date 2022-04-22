@@ -22,6 +22,8 @@ export class FormComponent implements OnInit {
   genero: any[] = ['masculino', 'femenino'];
   form: FormGroup;
 
+  //aca vamos a crear un evento que va a ser emitido desde el hijo
+  //en el padre le vamos a pasar el bomre que le pusimos al output
   @Output() childToParent = new EventEmitter<String>();
 
 

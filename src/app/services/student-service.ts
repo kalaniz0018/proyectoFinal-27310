@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Student } from '../interfaces/student-response.interface';
 
 
@@ -6,6 +8,8 @@ import { Student } from '../interfaces/student-response.interface';
   providedIn: 'root'
 })
 export class StudentService {
+ 
+  public baseUrl =  'https://6262aedf005a66e1e3aba67e.mockapi.io/api/student';
 
   listStudent: Student[] = [
     { usuario: "jPerez", nombre: 'Julian', apellido: "Perez", genero: 'Masculino' },
@@ -17,10 +21,12 @@ export class StudentService {
   
   ];
 
-  constructor() { }
-//Metodo salice para obtener una copia del array. para obtener la lista de usuarios
-getUsuarios(){
-  return this.listStudent.slice();
+  constructor(private httpClient: HttpClient) { }
+
+//Método de solicitud de obtención para obtener datos de la API
+public getUsuarios(): Observable<Student[]> {
+  //este get me devuelte un array de student 
+  return this.httpClient.get<Student[]>(this.baseUrl);
 }
 
 //Metodo para eliminar un registro
@@ -34,6 +40,8 @@ agregarUsuario(usuario: Student){
   //unshift --> agrega un nuevo elemento alcomienzo del array 
   this.listStudent.unshift(usuario);
 }
+
+
 
 
 }
