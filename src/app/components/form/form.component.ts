@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Subscription } from 'rxjs';
 import { Student } from 'src/app/interfaces/student-response.interface';
 import { StudentService } from 'src/app/services/student-service';
 
@@ -18,9 +19,10 @@ export class FormComponent implements OnInit {
     { text: 'Four', cols: 2, rows: 1, color: '#DDBDF1' },
   ];
 
-  
+
   genero: any[] = ['masculino', 'femenino'];
   form: FormGroup;
+  subscription! : Subscription;
 
   //aca vamos a crear un evento que va a ser emitido desde el hijo
   //en el padre le vamos a pasar el bomre que le pusimos al output
@@ -38,11 +40,14 @@ export class FormComponent implements OnInit {
       genero: ['', Validators.required],
     });
   }
-  ngOnInit(): void {}
+  ngOnInit(): void { 
+    this.subscription = this.studentService.refresh.subscribe(() =>{
+      this.agregarUsuario()
+    })
+  }
 
   agregarUsuario() {
     //voy a imprimir el formulario para ver si los valorene stan llegando bien o no
- 
     //voy a crear una cnstante user va a ser de tipo ususario y lo vamos a configurar
     const user: Student = {
       //vamos a tener que acceder al valor del formulario a la propiedad usuario
@@ -52,20 +57,19 @@ export class FormComponent implements OnInit {
       genero: this.form.value.genero,
       id: this.form.value.id
     }
-   
-    this.studentService.agregarUsuario(user);
-   
+    this.studentService.agregarUsuario(user).subscribe((_: Student) => {
+      //avisar a abm para recargar usuarios
+      this.childToParent.emit('recargar');
 
-    //avisar a abm para recargar usuarios
-    this.childToParent.emit('recargar');
+      this._snackBar.open("El usuario fue agregado con éxito", "", {
+        //aca se pasa un objeto con configuraciones
+        duration: 1500,
+        horizontalPosition: "center",
+        verticalPosition: "top",
+        panelClass: ["snackbar-error"]
+      })
 
-    this._snackBar.open("El usuario fue agregado con éxito", "", {
-      //aca se pasa un objeto con configuraciones
-      duration: 1500,
-      horizontalPosition: "center",
-      verticalPosition: "top",
-      panelClass: ["snackbar-error"]
-    })
+    });
 
   }
 
