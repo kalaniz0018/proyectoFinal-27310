@@ -42,12 +42,12 @@ export class ABMStudentsComponent implements OnInit {
     this.studentService.getUsuarios().subscribe((data: Student[]) => {
       //Almacenamiento en la variable de instancia de los datos recuperados por el servicio
       this.listUsuarios = data;
-          //vamos a setear los datos que tenemos en el data source en el array de usuarios listUsuarios
-    //con el "new" creamos una instancia del mat table data source y le asignamos el array de usuarios
-    this.dataSource = new MatTableDataSource(this.listUsuarios);
-    
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+      //vamos a setear los datos que tenemos en el data source en el array de usuarios listUsuarios
+      //con el "new" creamos una instancia del mat table data source y le asignamos el array de usuarios
+      this.dataSource = new MatTableDataSource(this.listUsuarios);
+      
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
     });
 
   }
@@ -61,17 +61,19 @@ export class ABMStudentsComponent implements OnInit {
   }
 
   //en este caso vamos a utilizar el indice del array para eliminar el usuario
-  eliminarUsuario(index: number) {
-    this.studentService.eliminarUsuario(index);
-    //cuando el usuario elimina un elemento tenemos que volver allamar el metodo cargarUsuarios
-    this.cargarUsuarios();
-    this._snackBar.open("Usuario fue eliminado con éxito", "", {
-      //aca se pasa un objeto con configuraciones
-      duration: 1500,
-      horizontalPosition: "center",
-      verticalPosition: "top",
-      panelClass: ["snackbar-error"]
-    })
+  eliminarUsuario(id:string) {
+    console.log(id);
+    this.studentService.eliminarUsuario(id).subscribe((_: Student) => {
+      //cuando el usuario elimina un elemento tenemos que volver allamar el metodo cargarUsuarios
+      this.cargarUsuarios();
+      this._snackBar.open("Usuario fue eliminado con éxito", "", {
+        //aca se pasa un objeto con configuraciones
+        duration: 1500,
+        horizontalPosition: "center",
+        verticalPosition: "top",
+        panelClass: ["snackbar-error"]
+      })
+    });
   }
 
 }

@@ -11,7 +11,7 @@ export class StudentService {
  
   public baseUrl =  'https://6262aedf005a66e1e3aba67e.mockapi.io/api/student';
 
-  listStudent: Student[] = [
+/*   listStudent: Student[] = [
     { usuario: "jPerez", nombre: 'Julian', apellido: "Perez", genero: 'Masculino' },
     { usuario: "Akari", nombre: 'Karina', apellido: "Alaniz", genero: 'Femenino' },
     { usuario: "Fruben", nombre: 'Ruben', apellido: "Fanego", genero: 'Masculino' },
@@ -19,7 +19,7 @@ export class StudentService {
     { usuario: "Adaf", nombre: 'Dafne', apellido: "Alul", genero: 'Femenino' },
     { usuario: "Oara", nombre: 'Araxi', apellido: "Osikovsky", genero: 'Femenino' },
   
-  ];
+  ]; */
 
   constructor(private httpClient: HttpClient) { }
 
@@ -32,13 +32,18 @@ public getUsuarios(): Observable<Student[]> {
 //Metodo para eliminar un registro
 //en los parametros le ponemos el index para decir que queremos eliminar donde este parado
 // y que queremos eliminar un solo elemento
-eliminarUsuario(index:number){
- this.listStudent.splice(index,1);
+eliminarUsuario(id:string): Observable<Student>{
+ //this.listStudent.splice(index,1);
+ return this.httpClient.delete<Student>(this.baseUrl + `/${id}`);
 }
+/* delete(idreservas: number): Observable<TblReservas> {
+  return this.http.delete<TblReservas>(baseUrl + `/${idreservas}`);
+} */
+
 
 agregarUsuario(usuario: Student){
   //unshift --> agrega un nuevo elemento alcomienzo del array 
-  this.listStudent.unshift(usuario);
+  //this.listStudent.unshift(usuario);
 }
 
 

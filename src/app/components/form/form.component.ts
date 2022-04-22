@@ -49,7 +49,8 @@ export class FormComponent implements OnInit {
       usuario: this.form.value.usuario,
       nombre: this.form.value.nombre,
       apellido: this.form.value.apellido,
-      genero: this.form.value.genero
+      genero: this.form.value.genero,
+      id: this.form.value.id
     }
    
     this.studentService.agregarUsuario(user);
