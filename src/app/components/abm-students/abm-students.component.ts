@@ -19,7 +19,7 @@ export class ABMStudentsComponent implements OnInit {
   //Variable de instancia para almacenar los datos recuperados por el servicio
   listUsuarios: Student[] = [];
   studentsSubscription!: any
-  students$! : Observable<any>;
+  students$!: Observable<any>;
   displayedColumns: string[] = ['usuario', 'nombre', 'apellido', 'genero', 'acciones'];
   dataSource!: MatTableDataSource<any>;
 
@@ -38,10 +38,10 @@ export class ABMStudentsComponent implements OnInit {
   ngOnInit(): void {
     //con esto estamos llamando los dados desde el servicio y no desde el componente 
     this.cargarUsuarios();
-    this.studentsSubscription = this.students$.subscribe((students)=>{
+    this.studentsSubscription = this.students$.subscribe((students) => {
       this.students$ = students
     })
-  
+
   }
   ngOnDestroy(): void {
     this.studentsSubscription.unsubscribe()
@@ -54,7 +54,7 @@ export class ABMStudentsComponent implements OnInit {
       //vamos a setear los datos que tenemos en el data source en el array de usuarios listUsuarios
       //con el "new" creamos una instancia del mat table data source y le asignamos el array de usuarios
       this.dataSource = new MatTableDataSource(this.listUsuarios);
-      
+
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     });
@@ -70,7 +70,7 @@ export class ABMStudentsComponent implements OnInit {
   }
 
   //en este caso vamos a utilizar el indice del array para eliminar el usuario
-  eliminarUsuario(id:string) {
+  eliminarUsuario(id: string) {
     console.log(id);
     this.studentService.eliminarUsuario(id).subscribe((_: Student) => {
       //cuando el usuario elimina un elemento tenemos que volver allamar el metodo cargarUsuarios
@@ -84,6 +84,13 @@ export class ABMStudentsComponent implements OnInit {
       })
     });
   }
+
+  editarUsuario() {
+    this.studentService.editarUsuario(this.listUsuarios).subscribe(() => {
+      this.cargarUsuarios();
+    })
+  }
+
 
 }
 
