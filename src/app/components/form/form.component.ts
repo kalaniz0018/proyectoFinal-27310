@@ -2,8 +2,8 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Subscription } from 'rxjs';
-import { Student } from 'src/app/interfaces/student-response.interface';
-import { StudentService } from 'src/app/services/student-service';
+import { Student } from 'src/app/core/interfaces/student-response.interface';
+import { StudentService } from 'src/app/core/services/student-service';
 
 @Component({
   selector: 'app-form',

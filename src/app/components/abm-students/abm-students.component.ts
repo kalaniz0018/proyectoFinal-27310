@@ -4,8 +4,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Observable } from 'rxjs';
-import { Student } from 'src/app/interfaces/student-response.interface';
-import { StudentService } from 'src/app/services/student-service';
+import { Student } from 'src/app/core/interfaces/student-response.interface';
+import { StudentService } from 'src/app/core/services/student-service';
 
 @Component({
   selector: 'app-abm-students',
