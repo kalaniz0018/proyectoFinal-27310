@@ -3,33 +3,33 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FormComponent } from './components/form/form.component';
-import { NavbarComponent } from './core/components/navbar/navbar.component';
-import { ToolbarComponent } from './core/components/toolbar/toolbar.component';
-import { StudentsComponent } from './components/students/students.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MaterialModule } from 'material/material.module';
-import { ABMStudentsComponent } from './components/abm-students/abm-students.component';
 import { HttpClientModule } from '@angular/common/http';
+import { SharedModule } from './shared/shared.module';
+import { CoreModule } from './core/core.module';
+import { FeatureModule } from './feature/feature.module';
+import { RouterModule } from '@angular/router';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FormComponent,
-    NavbarComponent,
-    ToolbarComponent,
-    StudentsComponent,
-    ABMStudentsComponent
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    MaterialModule,
-    HttpClientModule
+    HttpClientModule,
+    SharedModule,
+    CoreModule,
+    FeatureModule,
+    MatToolbarModule 
   ],
+  //exports:[RouterModule],
   providers: [],
   bootstrap: [AppComponent]
 })

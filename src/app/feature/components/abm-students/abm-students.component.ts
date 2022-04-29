@@ -3,7 +3,6 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { Observable } from 'rxjs';
 import { Student } from 'src/app/core/interfaces/student-response.interface';
 import { StudentService } from 'src/app/core/services/student-service';
 
@@ -19,7 +18,6 @@ export class ABMStudentsComponent implements OnInit {
   //Variable de instancia para almacenar los datos recuperados por el servicio
   listUsuarios: Student[] = [];
   studentsSubscription!: any
-  students$!: Observable<any>;
   displayedColumns: string[] = ['usuario', 'nombre', 'apellido', 'genero', 'acciones'];
   dataSource!: MatTableDataSource<any>;
 
@@ -38,10 +36,6 @@ export class ABMStudentsComponent implements OnInit {
   ngOnInit(): void {
     //con esto estamos llamando los dados desde el servicio y no desde el componente 
     this.cargarUsuarios();
-    this.studentsSubscription = this.students$.subscribe((students) => {
-      this.students$ = students
-    })
-
   }
   ngOnDestroy(): void {
     this.studentsSubscription.unsubscribe()
