@@ -1,0 +1,17 @@
+[
+    {
+        "nombre": "Dashboard",
+        "redirect": "/dashboard"
+
+    },
+    {
+        "nombre": "feature",
+        "redirect": "/feature/abm-students"
+        
+    },
+    {
+        "nombre": "Reportes",
+        "redirect": "/feature/form"
+                
+    }
+]

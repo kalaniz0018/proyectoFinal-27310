@@ -51,9 +51,9 @@ export class StudentService {
   }
 
   //busca el cliente ahhtp y que coincida el id, hace un put trayendolo modificado 
-editarUsuario(user:any): Observable<Student>{
-  return this.httpClient.put<Student>(this.baseUrl + `/${user.id}`, user)
-}
+  editarUsuario(user: any): Observable<Student> {
+    return this.httpClient.put<Student>(this.baseUrl + `/${user.id}`, user)
+  }
 
 
 }
