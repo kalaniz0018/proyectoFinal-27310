@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ABMStudentsComponent } from './feature/components/abm-students/abm-students.component';
+import { ABMStudentsComponent } from './dashboard/components/abm-students/abm-students.component';
 
 @Component({
   selector: 'app-root',

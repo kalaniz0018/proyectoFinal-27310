@@ -6,12 +6,12 @@
     },
     {
         "nombre": "Estudiantes",
-        "redirect": "/feature/abm-students"
+        "redirect": "/dashboard/students"
         
     },
     {
         "nombre": "Cursos",
-        "redirect": "/feature/courses"
+        "redirect": "/dashboard/courses"
                 
     }
 ]

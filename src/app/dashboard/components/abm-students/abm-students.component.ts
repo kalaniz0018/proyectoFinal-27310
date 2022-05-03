@@ -30,7 +30,7 @@ export class ABMStudentsComponent implements OnInit {
   //lo inicializamos como un array vacio
   //Variable de instancia para almacenar los datos recuperados por el servicio
   listUsuarios: Student[] = [];
-  studentsSubscription!: any
+  //studentsSubscription!: any
   displayedColumns: string[] = ['usuario', 'nombre', 'apellido', 'genero', 'acciones'];
   dataSource!: MatTableDataSource<any>;
 
@@ -51,7 +51,7 @@ export class ABMStudentsComponent implements OnInit {
     this.cargarUsuarios();
   }
   ngOnDestroy(): void {
-    this.studentsSubscription.unsubscribe()
+    //this.studentsSubscription.unsubscribe()
   }
 
   cargarUsuarios() {

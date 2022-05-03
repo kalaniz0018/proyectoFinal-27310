@@ -8,10 +8,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
-import { FeatureModule } from './feature/feature.module';
 import { RouterModule } from '@angular/router';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { MaterialModule } from './shared/material/material.module';
 
 @NgModule({
   declarations: [
@@ -26,7 +26,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     HttpClientModule,
     SharedModule,
     CoreModule,
-    FeatureModule,
+    RouterModule,
+    MaterialModule,
     MatToolbarModule 
   ],
   //exports:[RouterModule],
