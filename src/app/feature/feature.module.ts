@@ -8,6 +8,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { CoreModule } from '../core/core.module';
 import { MaterialModule } from '../shared/material/material.module';
 import { LoginComponent } from './components/login/login.component';
+import { EditDialogComponentComponent } from './components/dialog/edit-dialog-component/edit-dialog-component.component';
+import { CreateUserComponent } from './components/create-user/create-user.component';
+import { CoursesComponent } from './components/courses/courses.component';
+import { HomeComponent } from './components/home/home.component';
 
 
 
@@ -16,6 +20,10 @@ import { LoginComponent } from './components/login/login.component';
     FormComponent,
     ABMStudentsComponent,
     LoginComponent,
+    EditDialogComponentComponent,
+    CreateUserComponent,
+    CoursesComponent,
+    HomeComponent,
   ],
   imports: [
     CommonModule,

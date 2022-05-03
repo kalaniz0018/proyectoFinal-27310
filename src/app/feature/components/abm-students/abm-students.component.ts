@@ -1,10 +1,23 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Student } from 'src/app/core/interfaces/student-response.interface';
 import { StudentService } from 'src/app/core/services/student-service';
+import { EditDialogComponentComponent } from '../dialog/edit-dialog-component/edit-dialog-component.component';
+
+export interface DialogData {
+  usuario: string;
+  nombre: string,
+  apellido: string,
+  genero: string,
+  id: string
+}
+/**
+ * @title Basic use of `<table mat-table>`
+ */
 
 @Component({
   selector: 'app-abm-students',
@@ -28,7 +41,7 @@ export class ABMStudentsComponent implements OnInit {
   @Input('childToMaster') masterName: string | undefined;
 
   //Inyección del servicio para que esté disponible en la clase
-  constructor(private studentService: StudentService, private _snackBar: MatSnackBar) {
+  constructor(private studentService: StudentService, private _snackBar: MatSnackBar, public dialog: MatDialog) {
     //Suscripción al observable que devuelve listUsuarios. La respuesta asíncrona se 
     //resuelve mediante una función de flecha que almacena en data los datos recuperados por el servicio
   }
@@ -85,6 +98,21 @@ export class ABMStudentsComponent implements OnInit {
     })
   }
 
+  openDialogEdit(student: any) {
+    const dialogRef = this.dialog.open(EditDialogComponentComponent, {
+      width: '250px',
+      data: student,
+    });
+    dialogRef.afterClosed().subscribe(() => {
+     
+      alert('Curso modificado');
+       
+    });
+  } 
+
 
 }
+
+
+
 

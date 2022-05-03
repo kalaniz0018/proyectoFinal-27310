@@ -5,13 +5,13 @@
 
     },
     {
-        "nombre": "feature",
+        "nombre": "Estudiantes",
         "redirect": "/feature/abm-students"
         
     },
     {
-        "nombre": "Reportes",
-        "redirect": "/feature/form"
+        "nombre": "Cursos",
+        "redirect": "/feature/courses"
                 
     }
 ]
